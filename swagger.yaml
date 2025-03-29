@@ -4,7 +4,7 @@ info:
   description: |-
     Esta es una API para la gestión de usuarios utilizando la especificación OpenAPI 3.0.
     Algunos enlaces útiles:
-    - [El repositorio de la API](https://github.com/aleort09/dsm52)
+    - [El repositorio de la API](https://github.com/aleort09/apiExam)
     - [Documentación de SWAPI](https://swapi.dev/documentation)
   termsOfService: http://swagger.io/terms/
   contact:
@@ -19,7 +19,7 @@ externalDocs:
   url: http://swagger.io
 
 servers:
-  - url: https://swapi.dev/api/
+  - url: https://examen.jeotech.x10.mx
 
 tags:
   - name: users
