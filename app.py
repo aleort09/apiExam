@@ -11,7 +11,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 load_dotenv()
 app=Flask(__name__)
 CORS(app)
-app.config['JWT_SECRET_KEY']='wyhgewty3g278te62fec32uhes'
+app.config['JWT_SECRET_KEY']='jacky2710'
 jwt=JWTManager(app)
 
 app.config['SQLALCHEMY_DATABASE_URI']=os.getenv('DATABASE_URL')
@@ -29,9 +29,8 @@ app.register_blueprint(user_bp, url_prefix='/users')
 def get_swagger_yaml():
     return send_from_directory(os.path.dirname(__file__), "swagger.yaml")
 
-# 📌 Configurar Swagger UI
-SWAGGER_URL = "/docs"  # Ruta de Swagger UI
-API_URL = "/swagger.yaml"  # URL del archivo YAML
+SWAGGER_URL = "/docs"
+API_URL = "/swagger.yaml"
 swagger_ui_blueprint = get_swaggerui_blueprint(SWAGGER_URL, API_URL)
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 

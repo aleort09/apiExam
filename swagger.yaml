@@ -8,7 +8,7 @@ info:
     - [Documentación de SWAPI](https://swapi.dev/documentation)
   termsOfService: http://swagger.io/terms/
   contact:
-    email: elaleortoxde@gmail.com
+    email: jackyramirez2710@gmail.com
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -19,7 +19,7 @@ externalDocs:
   url: http://swagger.io
 
 servers:
-  - url: https://examen.jeotech.x10.mx
+  - url: https://jacky.jeotech.x10.mx
 
 tags:
   - name: users
@@ -45,6 +45,32 @@ paths:
         '500':
           description: Error interno del servidor
 
+  /users/{id}:
+    get:
+      tags:
+        - users
+      summary: Obtener un usuario por ID
+      description: Devuelve los datos de un usuario específico.
+      operationId: getUserById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del usuario a obtener
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Usuario obtenido exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+
   /users/create:
     post:
       tags:
@@ -65,6 +91,43 @@ paths:
         '400':
           description: Datos inválidos
 
+  /users/edit/{id}:
+    post:
+      tags:
+        - users
+      summary: Editar un usuario
+      description: Edita los datos de un usuario existente.
+      operationId: editUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del usuario a editar
+          schema:
+            type: string
+      requestBody:
+        description: Nuevos datos del usuario
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Jane Doe"
+                email:
+                  type: string
+                  format: email
+                  example: "janedoe@example.com"
+      responses:
+        '200':
+          description: Usuario modificado exitosamente
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error al modificar el usuario
+
   /users/delete/{id}:
     delete:
       tags:
@@ -84,6 +147,8 @@ paths:
           description: Usuario eliminado exitosamente
         '404':
           description: Usuario no encontrado
+        '500':
+          description: Error al eliminar el usuario
 
   /users/login:
     post:
@@ -143,11 +208,11 @@ components:
           example: "1"
         name:
           type: string
-          example: "John Doe"
+          example: "Jacquline Ramirez Vilchis"
         email:
           type: string
           format: email
-          example: "johndoe@example.com"
+          example: "jackyramirez2710@gmail.com"
         password:
           type: string
-          example: "password123"
+          example: "jacky2710"
